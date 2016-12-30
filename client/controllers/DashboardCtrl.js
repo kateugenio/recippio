@@ -109,7 +109,7 @@ App.controller('DashboardController', function($scope, UserFactory, RecipeFactor
 		//get api key
 		RecipeFactory.getApiKey()
 		.then(function(apikey){
-			console.log("api key is: ", apikey.data.api);
+			
 			apiKey = apikey.data.api;
 
 			//spoonacular api call//
@@ -152,7 +152,7 @@ App.controller('DashboardController', function($scope, UserFactory, RecipeFactor
 		//get api key
 		RecipeFactory.getApiKey()
 		.then(function(apikey){
-			apiKey = apikey.data;
+			apiKey = apikey.data.api;
 			RecipeFactory.getOneRecipe(recipeID, apiKey)
 			.then(function(apiRes){
 				for (var i=0; i<apiRes.data.extendedIngredients.length; i++){
