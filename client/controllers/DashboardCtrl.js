@@ -109,8 +109,8 @@ App.controller('DashboardController', function($scope, UserFactory, RecipeFactor
 		//get api key
 		RecipeFactory.getApiKey()
 		.then(function(apikey){
-			console.log(apikey.data);
-			apiKey = apikey.data;
+			console.log("api key is: ", apikey.data.api);
+			apiKey = apikey.data.api;
 
 			//spoonacular api call//
 			RecipeFactory.getRecipes(ingredients, apiKey)
