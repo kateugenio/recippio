@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
     models_path = path.join( __dirname, "../models");
 
 // connect
-mongoose.connect('mongodb://localhost/recippio');
+mongoose.connect(MONGODB_URI);
 // load any models
 
 fs.readdirSync( models_path ).forEach( function( file ) {
