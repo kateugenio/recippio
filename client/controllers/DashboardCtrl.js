@@ -109,6 +109,7 @@ App.controller('DashboardController', function($scope, UserFactory, RecipeFactor
 		//get api key
 		RecipeFactory.getApiKey()
 		.then(function(apikey){
+			console.log(apikey.data);
 			apiKey = apikey.data;
 
 			//spoonacular api call//
