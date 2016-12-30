@@ -64,7 +64,7 @@ App.controller('DashboardController', function($scope, UserFactory, RecipeFactor
 	});
 
 	$scope.addIngredient = function(){
-		IngredientFactory.addIngredient($scope.ingredient)
+		IngredientFactory.addIngredient($scope.$parent.ingredient)
 		.then(function(serverResponse){
 			if (serverResponse.data.errors){
 				$scope.ingAddSuccess = false;
