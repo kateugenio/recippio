@@ -1,0 +1,60 @@
+<div class="container-fluid" id="registrationPage">
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+			<h1 id="registration"><span id="recippio_reg">RecippiO</span> Registration</h1>
+			<div class="alert alert-danger alert-dismissible" role="alert" ng-show="userExistsError" ng-hide="!(userExistsError)">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>This account is already registered. Please try another email address. Thank you.</strong>
+			</div>
+			<div class="alert alert-danger alert-dismissible" role="alert" ng-show="PWMatchError" ng-hide="!(PWMatchError)">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>Password and Confirm Password do not match, please try again</strong>
+			</div>
+			<div class="alert alert-danger alert-dismissible" role="alert" ng-show="emailError" ng-hide="!(emailError)">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>Please enter a valid email address</strong>
+			</div>
+			<div class="alert alert-danger alert-dismissible" role="alert" ng-show="firstNameError" ng-hide="!(firstNameError)">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>First Name is required</strong>
+			</div>
+			<div class="alert alert-danger alert-dismissible" role="alert" ng-show="lastNameError" ng-hide="!(lastNameError)">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>Last Name is required</strong>
+			</div>
+			<div class="alert alert-danger alert-dismissible" role="alert" ng-show="passwordError" ng-hide="!(passwordError)">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>Password must be at least 3 characters</strong>
+			</div>
+
+			<form ng-submit="register()">
+			  <div class="form-group">
+			    <label for="email">Email address</label>
+			    <input type="text" class="form-control" id="email" placeholder="Email" ng-model="newUser.email" value="{{registerEmail}}">
+			  </div>
+			  <div class="form-group">
+			    <label for="firstName">First Name</label>
+			    <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="newUser.first_name">
+			  </div>
+			  <div class="form-group">
+			    <label for="lastName">Last Name</label>
+			    <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="newUser.last_name">
+			  </div>
+			  <div class="form-group">
+			    <label for="password">Password</label>
+			    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="newUser.password">
+			  </div>
+			  <div class="form-group">
+			    <label for="confirmPW">Confirm Password</label>
+			    <input type="password" class="form-control" id="confirmPW" placeholder="Confirm Password" ng-model="newUser.confirmPW">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Register</button>
+			  <a href="#/"><button type="submit" class="btn btn-default">Cancel</button></a>
+			</form>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+</div>

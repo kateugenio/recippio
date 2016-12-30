@@ -1,0 +1,197 @@
+@charset "UTF-8";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: 'Open Sans', sans-serif;
+	background-color: #3b3a36;
+}
+.main {
+	width: 100%;
+	height:100vh;
+	background: url(../images/mainpageimg2.jpg) no-repeat center center fixed;
+	-webkit-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    padding: 20px;
+    opacity: 0.825;
+}
+#recippio_brand {
+	font-size: 5em;
+	font-family: 'Lobster', sans-serif;
+	color: red;
+	text-shadow: 2px 2px #000000;
+}
+#recippio_slogan {
+	font-size: 1.4em;
+	font-family: 'Lobster', sans-serif;
+	color: #000000;
+	font-style: italic;
+	text-shadow: 2px 2px #FFFFFF;
+}
+#login_area {
+	float: right;
+	margin-top: 15px;
+}
+#login {
+	display: inline;
+	color: #000000;
+	margin-right: 10px;
+	margin-bottom: 3px;
+}
+#signin {
+	margin-top: 150px;
+	text-align: center;
+}
+#signup {
+	font-size: 3.5em;
+	color: #FFFFFF;
+	text-shadow: 2px 2px #000000;
+}
+#registrationPage {
+	color: #e9ece5;
+}
+#registration {
+	color: red;
+	font-size: 3.3em;
+	text-shadow: 1px 1px #b3c2bf;
+}
+#recippio_reg {
+	color: red;
+	font-family: 'Lobster', sans-serif;
+	font-size: 1.3em;
+	text-shadow: 1px 1px #b3c2bf;
+}
+.navbar-default {
+	/*height: 75px;*/
+/*	background-color: #76a5af;*/
+	background-color: #c0dfd9;
+	border-radius: 0px 0px 55px 55px;
+}
+.navbar-brand {
+	margin-top: 7px;
+	padding-top: 30px;
+	padding-bottom: 80px;
+	padding-left: 20px;
+}
+#recippio_nav_brand {
+	color: red;
+	font-size: 2.7em;
+	font-family: 'Lobster', sans-serif;
+	text-shadow: 2px 2px #50737a;
+	letter-spacing: 2px;
+}
+#welcome {
+	text-align: left;
+	color: #b3c2bf;
+	font-size: 3em;
+}
+.glyphicon {
+	display: block;
+	text-align: center;
+	color: grey;
+}
+.row {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+#addIngBtn {
+	float: right;
+}
+#userIngredientsTable {
+	width: 100%;
+	height: 450px;
+	overflow: scroll;
+}
+table {
+	text-align: center;
+	color: #e9ece5;
+	/*background-color: #edd9c0;*/
+}
+table th {
+	text-align: center;
+}
+#loading {   
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.1); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+#loading-content {
+    position: relative;
+    top: 25%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    color: red;
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+.recipes {
+	float: left;
+	width: 30%;
+	height: 315px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 3px;
+	margin-right: 3px;
+	border: 1px solid black;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	color: #e9ece5;
+/*	background-color: #76a5af;
+	background: rgba(242,246,248,1);
+	background: -moz-linear-gradient(-45deg, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 18%, rgba(181,198,208,1) 41%, rgba(118,165,175,1) 100%);
+	background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(242,246,248,1)), color-stop(18%, rgba(216,225,231,1)), color-stop(41%, rgba(181,198,208,1)), color-stop(100%, rgba(118,165,175,1)));
+	background: -webkit-linear-gradient(-45deg, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 18%, rgba(181,198,208,1) 41%, rgba(118,165,175,1) 100%);
+	background: -o-linear-gradient(-45deg, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 18%, rgba(181,198,208,1) 41%, rgba(118,165,175,1) 100%);
+	background: -ms-linear-gradient(-45deg, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 18%, rgba(181,198,208,1) 41%, rgba(118,165,175,1) 100%);
+	background: linear-gradient(135deg, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 18%, rgba(181,198,208,1) 41%, rgba(118,165,175,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#76a5af', GradientType=1 );*/
+}
+/* Small devices (tablets, 768px and up) */
+.recipes a {
+	text-decoration: none;
+	color: #e9ece5;
+	cursor: pointer;
+}
+.recipes img {
+	margin-left: auto;
+	margin-right: auto;
+}
+.panel {
+	background-color: #b3c2bf;
+	border-radius: 10px;
+}
+@media (max-width:768px){
+	.recipes {
+		float: none;
+		width: 90%;
+	}
+	#addIngBtn {
+		float: left;
+		margin-top: 10px;
+	}
+}
+.quantity-group {
+	display: inline-block;
+}
+#moreBtn {
+	text-align: center;
+}
+.badge {
+	margin-left: 6px;
+	margin-bottom: 4px;
+}
+.glyphicon-ok-sign, .glyphicon-remove-sign {
+	color: #FFFFFF;
+}
+#welcomeModalContent {
+	background-color: #c0dfd9;
+}

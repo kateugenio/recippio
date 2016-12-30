@@ -1,0 +1,235 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><p id="recippio_nav_brand">RecippiO</p></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a style="cursor: pointer" ng-click="logout()"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container" id="mainContainer">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="welcome"><strong>Welcome, {{userFirstName}}!</strong></p>
+    </div>
+    <div class="col-md-6">
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" placeholder="Search ingredients..." aria-describedby="sizing-addon1" ng-model="filterIngredients">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg" id="addIngBtn" data-toggle="modal" data-target="#myModal">
+        Add Ingredients
+      </button>
+    </div>
+  </div>
+  
+  <div class="row" id="userIngredientsTable">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Ingredient</th>
+              <th>Category</th>
+              <th>Quantity</th>
+              <th>Notes</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="ingredient in userIngredients | filter:filterIngredients">
+              <td><input type="checkbox" ng-model="ingredients[ingredient.name]" ng-checked="all"></td>
+              <td>{{ingredient.name}}</td>
+              <td>{{ingredient.category}}</td>
+              <td>{{ingredient.quantity}} {{ingredient.qtyMeasure}}</td>
+              <td>{{ingredient.notes}}</td>
+              <td><button type="button" class="btn btn-warning" ng-click="deleteIngredient(ingredient._id)">Remove</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-primary btn-lg" ng-click="findRecipe()">Find Recipes</button>
+    </div>
+  </div>
+
+  <legend></legend>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div ng-show="loading" ng-hide="!(loading)" id="loading">
+        <div id="loading-content">
+          <img src="/static/images/loading6.gif">
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default" ng-show="showPanel" ng-hide="!(showPanel)">
+      <div class="panel-body">
+        <div class="col-md-12 col-xs-12 hvr-float-shadow recipes" ng-show="showRecipeDiv" ng-hide="!(showRecipeDiv)" ng-repeat="recipe in foundRecipes | limitTo: 6:0">
+          <a style="cursor: pointer" data-toggle="modal" data-target="#viewRecipeModal" ng-click="showOneRecipe(recipe.id)">
+          <p><strong>{{recipe.title}}</strong></p>
+          <p>Used Ingredients: {{recipe.usedIngredientCount}}</p>
+          <p>Missing Ingredients: {{recipe.missedIngredientCount}}</p>
+          <img src="https://spoonacular.com/recipeImages/{{recipe.id}}-240x150.{{recipe.imageType}}" class="img-responsive">
+          </a>
+        </div>
+        <div class="col-md-12 col-xs-12 hvr-float-shadow recipes" ng-show="showRecipeDiv2" ng-hide="!(showRecipeDiv2)" ng-repeat="recipe in foundRecipes | limitTo: 6:6">
+          <a style="cursor: pointer" data-toggle="modal" data-target="#viewRecipeModal" ng-click="showOneRecipe(recipe.id)">
+          <p><strong>{{recipe.title}}</strong></p>
+          <p>Used Ingredients: {{recipe.usedIngredientCount}}</p>
+          <p>Missing Ingredients: {{recipe.missedIngredientCount}}</p>
+          <img src="https://spoonacular.com/recipeImages/{{recipe.id}}-240x150.{{recipe.imageType}}">
+          </a>
+        </div>
+        <div class="col-md-12 col-xs-12 hvr-float-shadow recipes" ng-show="showRecipeDiv3" ng-hide="!(showRecipeDiv3)" ng-repeat="recipe in foundRecipes | limitTo: 6:12">
+          <a style="cursor: pointer" data-toggle="modal" data-target="#viewRecipeModal" ng-click="showOneRecipe(recipe.id)">
+          <p><strong>{{recipe.title}}</strong></p>
+          <p>Used Ingredients: {{recipe.usedIngredientCount}}</p>
+          <p>Missing Ingredients: {{recipe.missedIngredientCount}}</p>
+          <img src="https://spoonacular.com/recipeImages/{{recipe.id}}-240x150.{{recipe.imageType}}">
+          </a>
+        </div>
+        <div class="col-md-12 col-xs-12 hvr-float-shadow recipes" ng-show="showRecipeDiv4" ng-hide="!(showRecipeDiv4)" ng-repeat="recipe in foundRecipes | limitTo: 6:18">
+          <a style="cursor: pointer" data-toggle="modal" data-target="#viewRecipeModal" ng-click="showOneRecipe(recipe.id)">
+          <p><strong>{{recipe.title}}</strong></p>
+          <p>Used Ingredients: {{recipe.usedIngredientCount}}</p>
+          <p>Missing Ingredients: {{recipe.missedIngredientCount}}</p>
+          <img src="https://spoonacular.com/recipeImages/{{recipe.id}}-240x150.{{recipe.imageType}}">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" id="moreBtn">
+      <button type="button" class="btn btn-default" ng-show="viewMoreBtn" ng-hide="!(viewMoreBtn)" ng-click="viewMoreRecipes()">View More<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODALS -->
+
+    <!-- Modal for adding ingredients-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Ingredients</h4>
+          </div>
+          <div class="modal-body">
+            <p ng-show="ingNameError" ng-hide="!(ingNameError)">Ingredient name is required.</p>
+            <p ng-show="ingCategoryError" ng-hide="!(ingCategoryError)">Ingredient category is required.</p>
+            <p ng-show="ingQuantityError" ng-hide="!(ingQuantityError)">Ingredient quantity is required.</p>
+            <p ng-show="ingAddSuccess" ng-hide="!(ingAddSuccess)">Ingredient Successfully Added!</p>
+            <form>
+              <div class="form-group">
+                <input type="text" ng-model="ingredient.name" placeholder="Ingredient Name" class="form-control">
+              </div>
+              <div class="form-group">
+                <select ng-model="ingredient.category" class="form-control">
+                  <option value="">---Category---</option>
+                  <option value="meat">Meat</option>
+                  <option value="poultry">Poultry</option>
+                  <option value="seafood">Seafood</option>
+                  <option value="eggs">Eggs</option>
+                  <option value="nuts">Nuts/Seeds</option>
+                  <option value="beans">Beans</option>
+                  <option value="fruit">Fruit</option>
+                  <option value="spice">Spice</option>
+                  <option value="vegetable">Vegetable</option>
+                  <option value="grain">Grain</option>
+                  <option value="dairy">Dairy</option>
+                  <option value="oils">Oils</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group quantity-group">
+                <input type="text" ng-model="ingredient.quantity" placeholder="Quantity" class="form-control">
+              </div>
+              <div class="form-group">
+                <textarea ng-model="ingredient.notes" placeholder="Notes (optional)" class="form-control"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="addIngredient()">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal for viewing one recipe-->
+    <div class="modal fade" id="viewRecipeModal" tabindex="-1" role="dialog" aria-labelledby="viewRecipeLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="viewRecipeLabel">{{recipe.title}}</h4>
+          </div>
+          <div class="modal-body">
+            <h4><span class="label label-primary">Cook Time<span class="badge">{{recipe.cookingMinutes}} min</span></span></h4>
+            <h4><span class="label label-primary">Total Time<span class="badge">{{recipe.readyInMinutes}} min</span></span></h4>
+            <h4><span class="label label-info">Servings<span class="badge">{{recipe.servings}}</span></span></h4>
+            <h4 ng-if="recipe.glutenFree == true"><span class="label label-success">Gluten Free!</span></h4>
+            <h4><span class="label label-warning">Weight Watchers Smart Points<span class="badge">{{recipe.weightWatcherSmartPoints}}</span></span></h4>
+
+            <h3>Ingredients</h3>
+            <h4 ng-repeat="usedIngredient in usedIngredients"><span class="label label-success">{{usedIngredient}}<span class="badge"><span class="glyphicon glyphicon-ok-sign"></span></span></span></h4>
+
+            <h4 ng-repeat="missingIngredient in missingIngredients"><span class="label label-danger">{{missingIngredient}}<span class="badge"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></span></span></h4>
+        
+
+            <legend></legend>
+            <h4>Cooking Instructions</h4>
+            <p>View recipe from source here: <a href="{{recipe.sourceUrl}}" target="_blank">{{recipe.sourceUrl}}</a></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal for new user -->
+    <div class="modal fade welcomeModal" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" id="welcomeModalContent">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <h2>Welcome Chef! You're on your way to finding awesome recipes!</h2>
+            <h4>Start off by adding the ingredients you have in your very own kitchen by clicking on the "Add Ingredients" button. Select some of your ingredients, then click on "Find Recipes" to explore tons of awesome dishes you can make! Enjoy!</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
