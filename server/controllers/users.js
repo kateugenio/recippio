@@ -2,13 +2,14 @@ var User = require('../models/user');
 
 module.exports = {
 	create: function(req, res){
-		User.findOne({email: req.body.email}, function(err, user){
+		var email = req.body.email.toLowerCase();
+		User.findOne({email: email}, function(err, user){
 			if (err){
 				res.send(err);
 			}
 			else {
 				if (user === null){
-					User.create({first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, password: req.body.password}, function(err, newUser){
+					User.create({first_name: req.body.first_name, last_name: req.body.last_name, email: email, password: req.body.password}, function(err, newUser){
 						if (err){
 							res.json(err);
 						}
@@ -31,7 +32,8 @@ module.exports = {
 		})
 	},
 	login: function(req, res){
-		User.findOne({email: req.body.login_email}, function(err, user){
+		var email = req.body.login_email.toLowerCase();
+		User.findOne({email: email}, function(err, user){
 			if (err){
 				res.json(err);
 			}

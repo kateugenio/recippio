@@ -45,7 +45,7 @@
         <table class="table table-condensed table-reflow">
           <thead>
             <tr>
-              <th></th>
+              <th>Select</th>
               <th>Ingredient</th>
               <th>Category</th>
               <th>Quantity</th>
@@ -139,10 +139,10 @@
             <h4 class="modal-title" id="myModalLabel">Add Ingredients</h4>
           </div>
           <div class="modal-body">
-            <p ng-show="ingNameError" ng-hide="!(ingNameError)">Ingredient name is required.</p>
-            <p ng-show="ingCategoryError" ng-hide="!(ingCategoryError)">Ingredient category is required.</p>
-            <p ng-show="ingQuantityError" ng-hide="!(ingQuantityError)">Ingredient quantity is required.</p>
-            <p ng-show="ingAddSuccess" ng-hide="!(ingAddSuccess)">Ingredient Successfully Added!</p>
+            <p ng-show="$parent.ingNameError" ng-hide="!($parent.ingNameError)">Ingredient name is required.</p>
+            <p ng-show="$parent.ingCategoryError" ng-hide="!($parent.ingCategoryError)">Ingredient category is required.</p>
+            <p ng-show="$parent.ingQuantityError" ng-hide="!($parent.ingQuantityError)">Ingredient quantity is required.</p>
+            <p ng-show="$parent.ingAddSuccess" ng-hide="!($parent.ingAddSuccess)">Ingredient Successfully Added!</p>
             <form>
               <div class="form-group">
                 <input type="text" ng-model="$parent.ingredient.name" placeholder="Ingredient Name" class="form-control">
@@ -166,7 +166,7 @@
                 </select>
               </div>
               <div class="form-group quantity-group">
-                <input type="text" ng-model="$parent.ingredient.quantity" placeholder="Quantity" class="form-control">
+                <input type="text" ng-model="$parent.ingredient.quantity" placeholder="Quantity (optional)" class="form-control">
               </div>
               <div class="form-group">
                 <textarea ng-model="$parent.ingredient.notes" placeholder="Notes (optional)" class="form-control"></textarea>

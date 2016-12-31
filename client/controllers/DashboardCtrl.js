@@ -56,34 +56,34 @@ App.controller('DashboardController', function($scope, UserFactory, RecipeFactor
 
 
 	$('#addIngBtn').on('click', function(){
-		$scope.ingredient = '';
-		$scope.ingNameError = false;
-		$scope.ingCategoryError = false;
-		$scope.ingQuantityError = false;
-		$scope.ingAddSuccess = false;
+		$scope.$parent.ingredient = '';
+		$scope.$parent.ingNameError = false;
+		$scope.$parent.ingCategoryError = false;
+		$scope.$parent.ingQuantityError = false;
+		$scope.$parent.ingAddSuccess = false;
 	});
 
 	$scope.addIngredient = function(){
 		IngredientFactory.addIngredient($scope.$parent.ingredient)
 		.then(function(serverResponse){
 			if (serverResponse.data.errors){
-				$scope.ingAddSuccess = false;
+				$scope.$parent.ingAddSuccess = false;
 				if (serverResponse.data.errors.name){
-					$scope.ingNameError = true;
+					$scope.$parent.ingNameError = true;
 				}
 				if (serverResponse.data.errors.category){
-					$scope.ingCategoryError = true;
+					$scope.$parent.ingCategoryError = true;
 				}
 				if (serverResponse.data.errors.quantity){
-					$scope.ingQuantityError = true;
+					$scope.$parent.ingQuantityError = true;
 				}
 			}
 			else {
-				$scope.ingNameError = false;
-				$scope.ingCategoryError = false;
-				$scope.ingQuantityError = false;
-				$scope.ingAddSuccess = true;
-				$scope.ingredient = '';
+				$scope.$parent.ingNameError = false;
+				$scope.$parent.ingCategoryError = false;
+				$scope.$parent.ingQuantityError = false;
+				$scope.$parent.ingAddSuccess = true;
+				$scope.$parent.ingredient = '';
 				getUserIngredients();
 				$location.path('/dashboard');
 			}
