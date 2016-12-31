@@ -12,6 +12,7 @@ body{
 	width: 100%;
 	height:100vh;
 	background: url(../images/mainpageimg3.jpg) no-repeat center center fixed;
+	background-size: cover;
 	-webkit-background-size: 100% 100%;
     -o-background-size: 100% 100%;
     padding: 20px;
@@ -102,7 +103,7 @@ body{
 #userIngredientsTable {
 	width: 100%;
 	height: 450px;
-	overflow: scroll;
+	overflow: hidden;
 }
 table {
 	text-align: center;
@@ -169,7 +170,7 @@ table th {
 	background-color: #b3c2bf;
 	border-radius: 10px;
 }
-@media (max-width:768px){
+@media (max-width:414px){
 	.recipes {
 		float: none;
 		width: 90%;
@@ -178,6 +179,18 @@ table th {
 		float: left;
 		margin-top: 10px;
 	}
+	#login_area {
+		float: left;
+	}
+	#signin {
+		margin-top: 50px;
+	}
+	.main  {
+		background-size: cover;
+	}
+}
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
 }
 .quantity-group {
 	display: inline-block;
