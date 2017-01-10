@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a style="cursor: pointer" ng-click="logout()"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Logout</a></li>
+        <li><a id="logout-link" style="cursor: pointer" ng-click="logout()"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -28,7 +28,7 @@
     </div>
     <div class="col-md-6">
       <div class="input-group input-group-lg">
-        <input type="text" class="form-control" placeholder="Search ingredients..." aria-describedby="sizing-addon1" ng-model="filterIngredients">
+        <input type="text" class="form-control" placeholder="Search my ingredients" aria-describedby="sizing-addon1" ng-model="filterIngredients">
       </div>
     </div>
     <div class="col-md-6">
@@ -67,6 +67,7 @@
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col-md-12">
       <button type="button" class="btn btn-primary btn-lg" ng-click="findRecipe()">Find Recipes</button>

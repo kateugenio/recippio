@@ -17,6 +17,7 @@ App.controller('DashboardController', function($scope, UserFactory, RecipeFactor
 	$scope.usedIngredients = [];
 	$scope.missingIngredients = [];
 
+
 	function getLoggedInUser(){
 		UserFactory.getLoggedInUser()
 		.then(function(serverResponse){
@@ -190,4 +191,5 @@ App.controller('DashboardController', function($scope, UserFactory, RecipeFactor
 			console.log(err);
 		})
 	}
+
 })
